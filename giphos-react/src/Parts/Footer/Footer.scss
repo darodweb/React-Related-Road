@@ -1,0 +1,102 @@
+/* Variables*/
+
+    $primary-color: #572EE5;
+    $secundary-color: #5ED7C6;
+    $background-color: #F3F5F8;
+    $primary-font: 'Montserrat', sans-serif; /*bold*/
+    $secondary-font: 'Roboto', sans-serif; /*regular*/
+    $primary-size: 16px;
+    $small-font-size: 14px;
+    $large-font-size: 20px;
+    $dark-mode-black: black;
+    $dark-mode-gray: #37383C;
+    $dark-mode-dark-gray:  #222326;
+    $light-gray: #9CAFC3;
+
+
+footer {
+    
+    @media screen and (min-width: 499px) {
+        width: 100%;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    // border-bottom: solid $primary-color 5px;
+        @media screen and (min-width: 499px) {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 51.5px;
+            width: 100%;
+            // width: 1440px;
+            margin-top: 51.5px;
+            overflow: hidden;
+        }
+
+    .footer__social-icons {
+        display:flex;
+        justify-content: center;
+        margin-bottom: 47.8px;
+        @media screen and (min-width: 499px) {
+            margin: auto 0;
+        }
+
+
+     img {
+            margin-left: 20px;
+        }
+
+        .footer__social-icons--facebook:hover,
+        .footer__social-icons--instagram:hover,
+        .footer__social-icons--twitter:hover {
+            background: $primary-color;
+            transition: all ease 0.3s;
+        }
+    }
+
+    .footer-title {
+        text-align: center;
+        margin-bottom: 24px;
+        margin-top: 47px;
+        font-family: $secondary-font;
+        font-size: 15px;
+        @media screen and (min-width: 499px) {
+            margin-bottom: unset;
+            margin-top: unset;
+            margin-left: 156px;
+        }
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .footer-copyright {
+        margin-bottom: 23px;
+        text-align: center;
+        font-family: $secondary-font;
+        font-size: $small-font-size;
+        line-height: $large-font-size;
+        @media screen and (min-width: 499px) {
+            margin-bottom: unset;
+            margin-right: 158px
+
+        }
+    }
+}
+
+.footer-wrapper {
+    @media screen and (min-width: 499px) {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+}
+
+.border-bottom {
+    border-bottom: solid $primary-color 5px;
+}

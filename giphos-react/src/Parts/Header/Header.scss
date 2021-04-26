@@ -1,0 +1,208 @@
+/* Variables*/
+
+    $primary-color: #572EE5;
+    $secundary-color: #5ED7C6;
+    $background-color: #F3F5F8;
+    $primary-font: 'Montserrat', sans-serif; /*bold*/
+    $secondary-font: 'Roboto', sans-serif; /*regular*/
+    $primary-size: 16px;
+    $small-font-size: 14px;
+    $large-font-size: 20px;
+    $dark-mode-black: black;
+    $dark-mode-gray: #37383C;
+    $dark-mode-dark-gray:  #222326;
+    $light-gray: #9CAFC3;
+
+.border-top {
+    border-top: solid $primary-color 5px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 95px;
+    margin-bottom: 7px;
+    @media screen and (min-width: 499px) {
+        margin-bottom: 0px;
+    }
+    // width: 1440px;
+}
+
+.logo__container {
+    margin-left: 22px;
+
+    svg {
+    margin-top: 29px;
+    margin-left: 22px;
+    }
+}
+
+.logo__desktop, .logo__desktop--noc {
+    width: 68px;
+    height: 60px;
+}
+
+/*Hamburguer Menu*/
+
+.hamburger {
+    width:15px;
+    margin: 47px 26px 34px 0;
+    height: 14px;
+    order:2;
+    z-index: 3;
+    @media screen and (min-width: 499px) {
+        display:none;
+    }
+}
+
+.menu {
+    display:none;
+    @media screen and (min-width: 499px) {
+        display:flex;
+        justify-content: space-between;
+
+
+    }
+}
+.menu.display {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-color;
+    opacity: .9;
+    z-index: 2;
+    margin-top:95px;
+    position:fixed;
+    top: 0;
+    left:0;
+    text-align: center;
+
+    li:first-child {
+        margin-top: -35rem;
+    }
+    
+    li a {
+        color:white;
+        text-decoration: none;
+        border-bottom: white 1px solid;
+        position:relative;
+        text-decoration: none;
+    }
+
+    li a::after {
+    background-color: #efefef; 
+    bottom: -24px;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 60%;
+    position: absolute;
+    transform: translate(-60%,0);
+    width: 40px;
+    }
+
+    a:link, a:active, a:visited {
+        text-decoration: none;
+    }
+
+}
+
+tspan .logo__text {
+    font-size: 18px;
+    color: $primary-color;
+    word-spacing: 21px;
+}
+
+nav {
+    display:flex;
+    @media screen and (min-width:499px) {
+        align-items: center;
+    }
+}
+
+nav ul {
+    display:flex;
+    margin-top: 36px;
+    order: 1;
+    @media screen and (min-width:499px) {
+        order:0;
+    }
+}
+
+
+
+nav ul li {
+    display:flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0 auto;
+    @media screen and (min-width:499px) {
+        display:flex;
+        margin-left: 50px;
+    }
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: $primary-color;
+    line-height: 60px;
+    font-family: $primary-font;
+
+    @media screen and (min-width:499px) {
+        font-size: 13px;
+        font-weight: 700;
+    }
+}
+
+.floating-button-container {
+
+    @media screen and (min-width: 499px) {
+        margin-top: 23px;
+        margin-right: 156px;
+        margin-left: 53px;
+
+    }
+    
+}
+
+
+/*Floating Action Button*/
+.floating__button {
+    border-radius:100%;
+    background-color: white;
+    width:54px;
+    height:54px;
+    color: $primary-color;
+    outline:none;
+    border: 1px solid $primary-color;
+    display:none;
+    @media screen and (min-width: 499px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+  
+}
+
+.floating__button:hover {
+    @media screen and (min-width: 499px) {
+        background-color: $primary-color;
+        color: white;
+        transition: all ease 0.3s; 
+    }
+    
+}
+
+.kc_fab_main_btn:focus {
+  transform:scale(1.1);
+  transform:rotate(45deg);
+  -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+
+}
+
