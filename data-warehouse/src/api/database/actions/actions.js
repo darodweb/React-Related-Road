@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
-const { model } = require('../../models/usuariosModel');
-const { modelCiudad } = require('../../models/ciudadesModel');
-mongoose.connect('mongodb+srv://acamica123:acamica123@warehouse.qanab.mongodb.net/Warehouse?retryWrites=true&w=majority');
+// const { model } = require('../../models/regionesModel');
+mongoose.connect('mongodb+srv://acamica123:acamica123@warehouse.qanab.mongodb.net/Warehouse?retryWrites=true&w=majority', { useUnifiedTopology: true }, { useNewUrlParser: true });
 
 module.exports.get = async (model, parameters) => {
     return model.find(parameters);
 }
 
-module.exports.create = async (modelCiudad, data) => {
-    const newObject = new Ciudades(data)
+module.exports.create = async (model, data) => {
+    const newObject = new model(data)
     const result = await newObject.save();
     return result;
 }

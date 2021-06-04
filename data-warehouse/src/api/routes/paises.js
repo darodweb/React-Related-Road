@@ -5,16 +5,33 @@ var authentication = require('../authentication');
 var paisesModel = require('../models/paisesModel');
 var regionesModel = require('../models/regionesModel');
 
-router.get('/paises', authentication.verifyUser, async (req, res) => {
-    const paises = await actions.get(paisesModel.model);
+
+//Este funciona
+router.get('/paises/:idRegion', /*authentication.verifyUser,*/ async (req, res) => {
+    const pais = await actions.get(paisesModel.model, { idRegion: req.params.idRegion });
+    res.send(pais);
+});
+
+router.get('/paises', /*authentication.verifyUser,*/ async (req, res) => {
+    const paises = await paisesModel.model.aggregate([
+        {
+            "$lookup": {
+                "from": "paises",
+                "localField": "idRegion",
+                "foreignField": "_id",
+                "as": "region"
+            }
+        }
+    ]).exec();
+    // const paises = await Paises.find();
     res.send(paises);
 });
 
-router.post('/pais', authentication.verifyUser, async (req, res) => {
+router.post('/pais', /*authentication.verifyUser,*/ async (req, res) => {
     const pais = await actions.create(
-        paisesModel.model, 
+        paisesModel.model,
         req.body);
-        res.send(pais);
+    res.send(pais);
 });
 
 router.put('/something', authentication.verifyUser, async (req, res) => {

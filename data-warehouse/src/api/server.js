@@ -12,13 +12,16 @@ var swaggerDefinition = require('./swaggerDefinitons');
 
 //models
 var usuariosModel = require('./models/usuariosModel');
+var usuariosModel = require('./models/usuariosModel');
+
+var cors = require('cors');
 
 // Routers of our database
 var users = require('./routes/users');
-var orders = require('./routes/orders');
 var regiones = require('./routes/regiones');
 var paises = require('./routes/paises');
 var ciudades = require('./routes/ciudades');
+
 
 var apiLimiterLogin = rateLimit({
     max: 100
@@ -37,20 +40,17 @@ var server = express();
 
 
 server.use(helmet());
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(cors());
+// server.use(bodyParser.urlencoded({ extended: true }));
+server.use(express.json());
 server.use('/', apiLimiterLogin);
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 server.use('/', users);
-// server.use('/', orders);
 server.use('/', regiones);
 server.use('/', paises);
 server.use('/', ciudades);
 
-
-// server.get('/', (req, res) => {
-//     res.send('Bienvenidos a mi api de express');
-// });
 
 server.get('/api-docs.json', (req, res) => {
     res.send(swaggerSpec);
