@@ -12,18 +12,19 @@ router.get('/paises/:idRegion', /*authentication.verifyUser,*/ async (req, res) 
     res.send(pais);
 });
 
+//VERIFY THIS ENDPOINT. NOT RETURNING REGION
 router.get('/paises', /*authentication.verifyUser,*/ async (req, res) => {
     const paises = await paisesModel.model.aggregate([
         {
             "$lookup": {
-                "from": "paises",
+                "from": "regiones",
                 "localField": "idRegion",
                 "foreignField": "_id",
                 "as": "region"
             }
         }
     ]).exec();
-    // const paises = await Paises.find();
+    // const paises = await paises.find();
     res.send(paises);
 });
 

@@ -6,44 +6,60 @@ var ciudadesModel = require('../models/ciudadesModel');
 const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
+router.get('/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
 
-router.get('/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) => {
-    const ciudades = await ciudadesModel.model.aggregate([
-        {
-            "$match": { idPais: ObjectId(req.params.idPais) },
-        },
-        {
-            "$lookup": {
-                "from": "paises",
-                "localField": "idPais",
-                "foreignField": "_id",
-                "as": "pais"
+    try {
+        const ciudades = await ciudadesModel.model.aggregate([
+            {
+                "$lookup": {
+                    "from": "paises",
+                    "localField": "idPais",
+                    "foreignField": "_id",
+                    "as": "pais"
+                }
             }
-        }
-    ]).exec()
-    res.send(ciudades);
+        ]).exec()
+        res.send(ciudades);
+    } catch (err) {
+        res.json({ Message: `Error: ${err.message}` })
+    }
 });
 
-//THIS CODE WORKS!!
-// router.get('/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
 
-//     try {
-//         const ciudades = await Ciudad.find();
-//         console.log(ciudades)
-//         res.send(ciudades);
-//     } catch (err) {
-//         res.json({ message: err })
-//     }
+router.get('/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) => {
+    try {
+        const ciudades = await ciudadesModel.model.aggregate([
+            {
+                "$match": { idPais: ObjectId(req.params.idPais) },
+            },
+            {
+                "$lookup": {
+                    "from": "paises",
+                    "localField": "idPais",
+                    "foreignField": "_id",
+                    "as": "pais"
+                }
+            }
+        ]).exec()
+        const resultado = ciudades.length;
+        console.log(resultado)
+        res.send(ciudades);
+    } catch (err) {
+        res.json({ Message: `Error: ${err.message}` })
+    }
 
-// });
+});
 
-
-//VERIFY THIS CODE!!
 router.post('/ciudad', /*authentication.verifyUser,*/ async (req, res) => {
-    const ciudad = await actions.create(
-        ciudadesModel.model,
-        req.body);
-    res.send(ciudad);
+    try {
+        const ciudad = await actions.create(
+            ciudadesModel.model,
+            req.body);
+        res.send(ciudad)
+    } catch (err) {
+        res.json({ Message: `Error: ${err.message}` })
+    }
+
 });
 
 // router.put('/something', authentication.verifyUser, async (req, res) => {

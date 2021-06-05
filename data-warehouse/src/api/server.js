@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var rateLimit = require('express-rate-limit');
 var authentication = require('./authentication');
@@ -12,11 +12,11 @@ var swaggerDefinition = require('./swaggerDefinitons');
 
 //models
 var usuariosModel = require('./models/usuariosModel');
-var usuariosModel = require('./models/usuariosModel');
+var ciudadesModel = require('./models/ciudadesModel');
 
 var cors = require('cors');
 
-// Routers of our database
+// Routes of our database
 var users = require('./routes/users');
 var regiones = require('./routes/regiones');
 var paises = require('./routes/paises');
@@ -40,8 +40,11 @@ var server = express();
 
 
 server.use(helmet());
-server.use(cors());
+server.use(cors({
+    origin: '*'
+}));
 // server.use(bodyParser.urlencoded({ extended: true }));
+// server.use(bodyParser());
 server.use(express.json());
 server.use('/', apiLimiterLogin);
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
