@@ -25,7 +25,7 @@ router.get('/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
     }
 });
 
-
+//Trae todas las ciudades por pais
 router.get('/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudades = await ciudadesModel.model.aggregate([
@@ -44,6 +44,17 @@ router.get('/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) 
         const resultado = ciudades.length;
         console.log(resultado)
         res.send(ciudades);
+    } catch (err) {
+        res.json({ Message: `Error: ${err.message}` })
+    }
+
+});
+
+//Trae una ciudad por ID
+router.get('/ciudad/:idCiudad', /*authentication.verifyUser,*/ async (req, res) => {
+    try {
+        const ciudad = await actions.get(ciudadesModel.model, { _id: req.params.idCiudad });
+        res.send(ciudad);
     } catch (err) {
         res.json({ Message: `Error: ${err.message}` })
     }
