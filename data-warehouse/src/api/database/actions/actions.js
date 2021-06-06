@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // const { model } = require('../../models/regionesModel');
 mongoose.connect('mongodb+srv://acamica123:acamica123@warehouse.qanab.mongodb.net/Warehouse?retryWrites=true&w=majority', { useUnifiedTopology: true }, { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 module.exports.get = async (model, parameters) => {
     return model.find(parameters);

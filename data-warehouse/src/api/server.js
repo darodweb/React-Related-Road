@@ -5,10 +5,9 @@ var rateLimit = require('express-rate-limit');
 var authentication = require('./authentication');
 var swaggerJsDoc = require('swagger-jsdoc');
 var swaggerUi = require('swagger-ui-express');
+var swaggerDefinition = require('./swaggerDefinitons');
 
 var actions = require('./database/actions/actions');
-
-var swaggerDefinition = require('./swaggerDefinitons');
 
 //models
 var usuariosModel = require('./models/usuariosModel');
@@ -17,7 +16,7 @@ var ciudadesModel = require('./models/ciudadesModel');
 var cors = require('cors');
 
 // Routes of our database
-var users = require('./routes/users');
+var usuarios = require('./routes/usuarios');
 var regiones = require('./routes/regiones');
 var paises = require('./routes/paises');
 var ciudades = require('./routes/ciudades');
@@ -49,7 +48,7 @@ server.use(express.json());
 server.use('/', apiLimiterLogin);
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-server.use('/', users);
+server.use('/', usuarios);
 server.use('/', regiones);
 server.use('/', paises);
 server.use('/', ciudades);
@@ -65,23 +64,33 @@ server.get('/', (req, res) => {
 })
 
 server.post('/login', async (req, res) => {
-    var arg = req.body;
-    var email = arg.email;
-    var contrasena = arg.contrasena;
-    const usuarios = await actions.get(usuariosModel.model, { email, contrasena })
-    if (usuarios.length > 0) {
-        var data = { email, contrasena, perfil: usuarios[0].perfil };
-        var token = authentication.generateToken(data);
-        res.send({
-            result: 'OK',
-            role: usuarios[0].Type,
-            token
-        });
-    } else {
-        res.send({
-            result: 'ERROR'
-        });
+
+    try {
+
+        var arg = req.body;
+        var email = arg.email;
+        var contrasena = arg.contrasena;
+        // const usuarios = await actions.get(usuariosModel.model, { email, password })
+        const usuario = usuariosModel.model.find({ email: email, contrasena: contrasena });
+        // const tipo = typeof (usuarios);
+        if (typeof (usuario) == "object") {
+            var data = { email, contrasena, perfil: usuario.perfil };
+            var token = authentication.generateToken(data);
+            res.send({
+                result: 'Login exitoso',
+                role: usuario.perfil,
+                token
+            });
+        } else {
+            res.send({
+                result: 'Error al iniciar sesion. Intente nuevamente.'
+            });
+        }
+
+    } catch (err) {
+        res.json({ "Error in login": `${err.message}` })
     }
+
 });
 
 server.listen(port, () => {

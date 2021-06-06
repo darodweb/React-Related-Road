@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const schema = {
-    nombre: String, 
-    apellido: String, 
+    nombre: String,
+    apellido: String,
     email: String,
     perfil: String,
     contrasena: String
