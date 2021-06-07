@@ -11,7 +11,6 @@ var actions = require('./database/actions/actions');
 
 //models
 var usuariosModel = require('./models/usuariosModel');
-var ciudadesModel = require('./models/ciudadesModel');
 
 var cors = require('cors');
 
@@ -20,7 +19,6 @@ var usuarios = require('./routes/usuarios');
 var regiones = require('./routes/regiones');
 var paises = require('./routes/paises');
 var ciudades = require('./routes/ciudades');
-
 
 var apiLimiterLogin = rateLimit({
     max: 100
@@ -36,7 +34,6 @@ const options = {
 const swaggerSpec = swaggerJsDoc(options);
 
 var server = express();
-
 
 server.use(helmet());
 server.use(cors({
