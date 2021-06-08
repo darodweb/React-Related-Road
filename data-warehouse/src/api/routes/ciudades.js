@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var actions = require('../database/actions/actions');
-// var authentication = require('../authentication');
+var authentication = require('../authentication');
 var ciudadesModel = require('../models/ciudadesModel');
 const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
@@ -42,7 +42,6 @@ router.get('/api/v1/ciudades/:idPais', /*authentication.verifyUser,*/ async (req
             }
         ]).exec()
         const resultado = ciudades.length;
-        console.log(resultado)
         res.send(ciudades);
     } catch (err) {
         res.json({ Message: `Error: ${err.message}` })
@@ -74,14 +73,36 @@ router.post('/api/v1/ciudad', /*authentication.verifyUser,*/ async (req, res) =>
 });
 
 router.patch('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
-    await actions.update(ciudadesModel.model, req.params.id, req.body);
-    const ciudadUpdated = await actions.get(ciudadesModel.model, { _id: req.params.id });
-    res.send(ciudadUpdated);
+
+    try {
+        await actions.update(ciudadesModel.model, req.params.id, req.body);
+        const ciudadUpdated = await actions.get(ciudadesModel.model, { _id: req.params.id });
+        res.json({ Message: 'City updated successfully.', Ciudad: `${ciudadUpdated}` })
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
+});
+
+router.put('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
+
+    try {
+        await actions.update(ciudadesModel.model, req.params.id, req.body);
+        const ciudadUpdated = await actions.get(ciudadesModel.model, { _id: req.params.id });
+        res.json({ Message: 'City updated successfully.', City: `${ciudadUpdated}` })
+
+    } catch (err) {
+        res.json({ Error: err.message });
+    }
 });
 
 router.delete('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
-    await actions.delete(ciudadesModel.model, req.params.id, req.body);
-    res.json({ Message: 'Ciudad deleted successfully.' });
+
+    try {
+        await actions.delete(ciudadesModel.model, req.params.id, req.body);
+        res.json({ Message: 'Record was successfully deleted.' })
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
 });
 
 module.exports = router;
