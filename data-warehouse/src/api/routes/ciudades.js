@@ -6,7 +6,7 @@ var ciudadesModel = require('../models/ciudadesModel');
 const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
-router.get('/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
+router.get('/api/v1/ciudades', authentication.verifyUser, async (req, res) => {
 
     try {
         const ciudades = await ciudadesModel.model.aggregate([
@@ -25,8 +25,8 @@ router.get('/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
     }
 });
 
-//Trae todas las ciudades por pais
-router.get('/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) => {
+
+router.get('/api/v1/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudades = await ciudadesModel.model.aggregate([
             {
@@ -50,8 +50,8 @@ router.get('/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) 
 
 });
 
-//Trae una ciudad por ID
-router.get('/ciudad/:idCiudad', /*authentication.verifyUser,*/ async (req, res) => {
+
+router.get('/api/v1/ciudad/:idCiudad', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudad = await actions.get(ciudadesModel.model, { _id: req.params.idCiudad });
         res.send(ciudad);
@@ -61,24 +61,27 @@ router.get('/ciudad/:idCiudad', /*authentication.verifyUser,*/ async (req, res) 
 
 });
 
-router.post('/ciudad', /*authentication.verifyUser,*/ async (req, res) => {
+router.post('/api/v1/ciudad', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudad = await actions.create(
             ciudadesModel.model,
             req.body);
-        res.send(ciudad)
+        res.json({ Message: `City created successfully: ${ciudad}` })
     } catch (err) {
         res.json({ Message: `Error: ${err.message}` })
     }
 
 });
 
-// router.put('/something', authentication.verifyUser, async (req, res) => {
-//     // code here
-// });
+router.patch('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
+    await actions.update(ciudadesModel.model, req.params.id, req.body);
+    const ciudadUpdated = await actions.get(ciudadesModel.model, { _id: req.params.id });
+    res.send(ciudadUpdated);
+});
 
-// router.delete('/something', authentication.verifyUser, async (req, res) => {
-//     // code here
-// });
+router.delete('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
+    await actions.delete(ciudadesModel.model, req.params.id, req.body);
+    res.json({ Message: 'Ciudad deleted successfully.' });
+});
 
 module.exports = router;
