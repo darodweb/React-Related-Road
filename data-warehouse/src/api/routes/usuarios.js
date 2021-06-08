@@ -7,12 +7,22 @@ var usuariosModel = require('../models/usuariosModel');
 
 router.get('/api/v1/usuarios', authentication.verifyUser, async (req, res) => {
     const usuarios = await actions.get(usuariosModel.model);
+
     res.send(usuarios);
 });
 
 router.get('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
-    const usuario = await actions.get(usuariosModel.model, { _id: req.params.id });
-    res.send(usuario);
+    try {
+        const usuario = await actions.get(usuariosModel.model, { _id: req.params.id });
+        if (usuario.length <= 0) {
+            res.json({ Message: "Usuario not found" })
+        } else {
+            res.json({ 'Result': usuario });
+        }
+
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
 });
 
 
