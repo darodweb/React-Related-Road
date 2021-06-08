@@ -19,6 +19,7 @@ var usuarios = require('./routes/usuarios');
 var regiones = require('./routes/regiones');
 var paises = require('./routes/paises');
 var ciudades = require('./routes/ciudades');
+var companies = require('./routes/companies');
 
 var apiLimiterLogin = rateLimit({
     max: 100
@@ -49,6 +50,7 @@ server.use('/', usuarios);
 server.use('/', regiones);
 server.use('/', paises);
 server.use('/', ciudades);
+server.use('/', companies);
 
 
 server.get('/api-docs.json', (req, res) => {

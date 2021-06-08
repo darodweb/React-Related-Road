@@ -13,7 +13,7 @@ router.get('/paises/:idRegion', /*authentication.verifyUser,*/ async (req, res) 
 });
 
 //VERIFY THIS ENDPOINT. NOT RETURNING REGION
-router.get('/paises', /*authentication.verifyUser,*/ async (req, res) => {
+router.get('/paises', authentication.verifyUser, async (req, res) => {
     const paises = await paisesModel.model.aggregate([
         {
             "$lookup": {
