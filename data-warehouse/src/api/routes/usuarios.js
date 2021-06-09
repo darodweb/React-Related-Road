@@ -6,9 +6,13 @@ var usuariosModel = require('../models/usuariosModel');
 
 
 router.get('/api/v1/usuarios', authentication.verifyUser, async (req, res) => {
-    const usuarios = await actions.get(usuariosModel.model);
+    try {
+        const usuarios = await actions.get(usuariosModel.model);
+        res.send(usuarios);
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
 
-    res.send(usuarios);
 });
 
 router.get('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
@@ -49,9 +53,14 @@ router.post('/api/v1/usuario', async (req, res) => {
 });
 
 router.patch('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
-    await actions.update(usuariosModel.model, req.params.id, req.body);
-    const usuarioUpdated = await actions.get(usuariosModel.model, { _id: req.params.id });
-    res.send(usuarioUpdated);
+    try {
+        await actions.update(usuariosModel.model, req.params.id, req.body);
+        const usuarioUpdated = await actions.get(usuariosModel.model, { _id: req.params.id });
+        res.json({ usuarioUpdated });
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
+
 });
 
 router.delete('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {

@@ -3,44 +3,79 @@ var router = express.Router();
 var actions = require('../database/actions/actions');
 var authentication = require('../authentication');
 var paisesModel = require('../models/paisesModel');
-var regionesModel = require('../models/regionesModel');
 
 
-//Este funciona
-router.get('/paises/:idRegion', /*authentication.verifyUser,*/ async (req, res) => {
-    const pais = await actions.get(paisesModel.model, { idRegion: req.params.idRegion });
-    res.send(pais);
+router.get('/api/v1/paises/:idRegion', authentication.verifyUser, async (req, res) => {
+    try {
+        const pais = await actions.get(paisesModel.model, { idRegion: req.params.idRegion });
+        res.json({ Paises: pais })
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
+
 });
 
-//VERIFY THIS ENDPOINT. NOT RETURNING REGION
-router.get('/paises', authentication.verifyUser, async (req, res) => {
-    const paises = await paisesModel.model.aggregate([
-        {
-            "$lookup": {
-                "from": "regiones",
-                "localField": "idRegion",
-                "foreignField": "_id",
-                "as": "region"
+router.get('/api/v1/paises', authentication.verifyUser, async (req, res) => {
+    try {
+        const paises = await paisesModel.model.aggregate([
+            {
+                "$lookup": {
+                    "from": "regiones",
+                    "localField": "idRegion",
+                    "foreignField": "_id",
+                    "as": "region"
+                }
             }
-        }
-    ]).exec();
-    // const paises = await paises.find();
-    res.send(paises);
+        ]).exec();
+        res.json({ paises });
+
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
+
 });
 
-router.post('/pais', /*authentication.verifyUser,*/ async (req, res) => {
-    const pais = await actions.create(
-        paisesModel.model,
-        req.body);
-    res.send(pais);
+router.post('/api/v1/pais', authentication.verifyUser, async (req, res) => {
+    try {
+        const pais = await actions.create(paisesModel.model, req.body);
+        res.json({ Message: "Pais created successfully", Pais: `${pais}` })
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
+
 });
 
-router.put('/something', authentication.verifyUser, async (req, res) => {
-    // code here
+router.patch('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
+
+    try {
+        await actions.update(paisesModel.model, req.params.id, req.body);
+        const paisUpdated = await actions.get(paisesModel.model, { _id: req.params.id });
+        res.json({ Message: 'Pais updated successfully.', pais: `${paisUpdated}` })
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
 });
 
-router.delete('/something', authentication.verifyUser, async (req, res) => {
-    // code here
+router.put('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
+
+    try {
+        await actions.update(paisesModel.model, req.params.id, req.body);
+        const paisUpdated = await actions.get(paisesModel.model, { _id: req.params.id });
+        res.json({ Message: 'Pais updated successfully.', Pais: `${paisUpdated}` })
+
+    } catch (err) {
+        res.json({ Error: err.message });
+    }
+});
+
+router.delete('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
+
+    try {
+        await actions.delete(paisesModel.model, req.params.id, req.body);
+        res.json({ Message: 'Record was successfully deleted.' })
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
 });
 
 module.exports = router;

@@ -20,6 +20,8 @@ var regiones = require('./routes/regiones');
 var paises = require('./routes/paises');
 var ciudades = require('./routes/ciudades');
 var companies = require('./routes/companies');
+var canales = require('./routes/canales');
+var contactos = require('./routes/contactos');
 
 var apiLimiterLogin = rateLimit({
     max: 100
@@ -51,6 +53,8 @@ server.use('/', regiones);
 server.use('/', paises);
 server.use('/', ciudades);
 server.use('/', companies);
+server.use('/', canales);
+server.use('/', contactos);
 
 
 server.get('/api-docs.json', (req, res) => {
