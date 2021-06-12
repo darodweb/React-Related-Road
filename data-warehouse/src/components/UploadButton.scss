@@ -1,5 +1,12 @@
 
 .label-upload-btn  {
+    // margin-top: 59px;
+    background-color: transparent !important;
+    border: #1d72c2 1px solid;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.upload-btn  {
     margin-top: 59px;
     background-color: transparent !important;
     border: #1d72c2 1px solid;
@@ -23,3 +30,26 @@
 
   }
 
+  .modal-content {
+      width: 339px;
+      height: 303px
+  }
+
+  .modal-footer {
+      flex-wrap: nowrap;
+  }
+
+  .modal-header {
+    border-bottom: none; 
+  }
+
+  .modal-footer {
+      border-top: none;
+  }
+
+  .modal-text {
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+  }
+// 105px x 94px
