@@ -17,14 +17,13 @@ const UploadButton = () => {
 
             <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content model-content-upload">
                         <div class="modal-body align-items-center text-center mt-4">
                             <img src="https://via.placeholder.com/105x94" ></img>
-                            <p className="modal-text">Selecciona el archivo de tu ordenador para importar tus contactos.</p>
+                            <p className="modal-text modal-text-upload">Selecciona el archivo de tu ordenador para importar tus contactos.</p>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer modal-footer-upload">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            {/* <button type="button" class="btn btn-primary">Importar</button> */}
                             <input type="file" id="upload-btn" hidden />
                             <label className="btn btn-primary label-upload-btn" for="upload-btn">
                                 Importar

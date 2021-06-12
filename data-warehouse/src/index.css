@@ -3,8 +3,12 @@
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-
 }
+
+label {
+  color: #616161
+}
+
 
 :root {
   --primary: #1d72c2;
@@ -44,7 +48,7 @@ body {
 
 .btn-secondary {
   background-color: transparent;
-  border: 1px solid var(--primary) !important;
+  border: 1px solid var(--primary);
   width: 172px; 
   height: 41px;
   color: var(--primary);
@@ -56,4 +60,7 @@ body {
     color: var(--white);
 }
 
+input {
+  border: 1px solid #CCCCCC;
+}
 

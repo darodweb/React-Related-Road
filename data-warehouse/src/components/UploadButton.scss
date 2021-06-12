@@ -30,26 +30,24 @@
 
   }
 
-  .modal-content {
+  .model-content-upload {
       width: 339px;
       height: 303px
   }
 
-  .modal-footer {
+  .modal-footer-upload {
       flex-wrap: nowrap;
   }
 
-  .modal-header {
-    border-bottom: none; 
-  }
 
-  .modal-footer {
+
+  .modal-footer-upload {
       border-top: none;
   }
 
-  .modal-text {
+  .modal-text-upload {
     text-align: center;
-    padding: 25px;
+    // padding: 25px;
     font-size: 14px;
   }
 // 105px x 94px

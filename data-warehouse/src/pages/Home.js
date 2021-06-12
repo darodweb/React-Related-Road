@@ -1,15 +1,18 @@
+import ExportContactBtn from '../components/ExportContactBtn';
 import Header from '../components/Header';
 import PrimaryButton from '../components/PrimaryButton';
 import SearchBar from '../components/SearchBar';
 import SecondaryButton from '../components/SecondaryButton';
 import UploadButton from '../components/UploadButton';
+import AddContact from '../components/AddContact';
+
 
 const Home = () => {
 
     return (
         <>
             <Header />
-            <div className="row">
+            <section className="row">
                 <div class="col-lg-9">
                     <SearchBar />
                 </div>
@@ -22,13 +25,25 @@ const Home = () => {
                         <UploadButton />
                     </div>
                     <div className="mx-1">
-                        <SecondaryButton text={"Exportar Contactos"} />
+                        <ExportContactBtn />
                     </div>
                     <div className="mx-1">
-                        <PrimaryButton text={"Agregar Contacto"} />
+                        <AddContact
+                            nombre={'nombre'}
+                            apellido={'apellido'}
+                            cargo={'cargo'}
+                            email={'company'}
+                            region={'region'}
+                            pais={'pais'}
+                            ciudad={'ciudad'}
+                            direccion={'company'}
+                            canal_de_contacto={'canal_de_contacto'}
+                            cuenta_de_usuario={'cuenta_de_usuario'}
+                            preferencias={'preferencias'}
+                        />
                     </div>
                 </div>
-            </div>
+            </section>
         </>
 
     );
