@@ -6,8 +6,54 @@ body {
 
 }
 
-/*Bootstrap overides*/
-.bg-primary {
-  background-color: #1d72c2 !important;
+:root {
+  --primary: #1d72c2;
+  --primary-hover: #104679;
+  --secondary: transparent;
+  --white: #fff;
 }
+
+/*Bootstrap overides*/
+.bg-primary, .btn-primary {
+  background-color: var(--primary) !important;
+
+}
+
+.btn-outline-secondary {
+  border-color: #c6c6c6
+}
+
+.search-button:hover {
+  color: unset;
+  background-color: unset;
+  border-color: unset;
+}
+
+
+.btn-primary {
+  background-color: var(--primary);
+  width: 172px; 
+  height: 41px;
+  font-size: 14px;
+  color: var(--white)
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--primary) !important;
+  width: 172px; 
+  height: 41px;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
 
