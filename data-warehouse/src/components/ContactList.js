@@ -7,7 +7,7 @@ const ContactList = () => {
         <>
 
             <section className="row d-flex container p-0">
-                <table className="table table-container table-borderless">
+                <table className="table table-container table-borderless .table-hover">
                     <thead className="border-bottom mt-4">
                         <tr>
                             <th scope="col">
