@@ -1,11 +1,10 @@
+import './Home.scss';
 import ExportContactBtn from '../components/ExportContactBtn';
 import Header from '../components/Header';
-import PrimaryButton from '../components/PrimaryButton';
 import SearchBar from '../components/SearchBar';
-import SecondaryButton from '../components/SecondaryButton';
 import UploadButton from '../components/UploadButton';
 import AddContact from '../components/AddContact';
-
+import ContactContainer from '../components/ContactContainer';
 
 const Home = () => {
 
@@ -42,6 +41,13 @@ const Home = () => {
                             preferencias={'preferencias'}
                         />
                     </div>
+                </div>
+            </section>
+
+            {/* ---------------Contact list container------------------- */}
+            <section className="row container contact-list-container">
+                <div className="col-12">
+                    <ContactContainer />
                 </div>
             </section>
         </>
