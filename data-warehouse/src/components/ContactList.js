@@ -6,8 +6,8 @@ const ContactList = () => {
 
         <>
 
-            <section className="row d-flex container p-0">
-                <table className="table table-container table-borderless .table-hover">
+            <section className="row d-flex contact-table-container container-fluid p-0">
+                <table className="table  table-borderless table-hover">
                     <thead className="border-bottom mt-4">
                         <tr>
                             <th scope="col">
