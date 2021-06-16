@@ -1,16 +1,16 @@
 import './Home.scss';
 import ExportContactBtn from '../components/ExportContactBtn';
-import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import UploadButton from '../components/UploadButton';
 import AddContact from '../components/AddContact';
 import ContactContainer from '../components/ContactContainer';
+import Login from './Login';
 
 const Home = () => {
 
     return (
         <>
-            <Header />
+
             <section className="row">
                 <div class="col-lg-9">
                     <SearchBar />
@@ -50,6 +50,7 @@ const Home = () => {
                     <ContactContainer />
                 </div>
             </section>
+
         </>
 
     );

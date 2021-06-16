@@ -66,7 +66,7 @@ server.get('/', (req, res) => {
 
 })
 
-server.post('/login', async (req, res) => {
+server.post('/login', authentication.verifyUserLogin, async (req, res) => {
 
     try {
 
@@ -86,7 +86,7 @@ server.post('/login', async (req, res) => {
             });
         } else {
             res.send({
-                result: 'Error al iniciar sesion. Intente nuevamente.'
+                result: 'Username o password incorrecto. Intente nuevamente.'
             });
         }
 
