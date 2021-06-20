@@ -33,84 +33,84 @@ const Region = () => {
                         <DeleteButton />
                     </div>
                     <div class="col-1 me-5 add-city-btn-container">
-                        <button className="btn btn-primary" ></button>Agregar ciudad</button>
-                </div>
+                        <button className="btn btn-primary" >Agregar ciudad</button>
+                    </div>
                 </div>
 
-            {/* Ciudades that are part of the region */}
-            <div className="row region-ciudades d-flex flex-column  mt-3">
-                <div className="col d-flex region-ciudad-title-container justify-content-between">
-                    <p className="region-pais">Buenos Aires</p>
-                    <div>
+                {/* Ciudades that are part of the region */}
+                <div className="row region-ciudades d-flex flex-column  mt-3">
+                    <div className="col d-flex region-ciudad-title-container justify-content-between">
+                        <p className="region-pais">Buenos Aires</p>
+                        <div>
+                            <EditButton />
+                            <DeleteButton />
+                        </div>
+                    </div>
+                </div>
+                <div className="row region-ciudades d-flex flex-column mt-3">
+                    <div className="col d-flex region-ciudad-title-container justify-content-between">
+                        <p className="region-pais">Cordoba</p>
+                        <div>
+                            <EditButton />
+                            <DeleteButton />
+                        </div>
+                    </div>
+                </div>
+                <div className="row region-ciudades d-flex flex-column mt-3">
+                    <div className="col d-flex region-ciudad-title-container justify-content-between">
+                        <p className="region-pais">Santa Fe</p>
+                        <div>
+                            <EditButton />
+                            <DeleteButton />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="row d-flex justify-content-between mt-3">
+                    <div className="col-1">
+                        <h4 className="region-title">Norteamerica</h4>
+                    </div>
+                    <div className="col-1 me-5 add-country-btn-container">
+                        <button className="btn btn-primary">Agregar pais</button>
+                    </div>
+                </div>
+
+                {/* Paises that are part of the region */}
+                <div className="row region-paises d-flex justify-content-between mt-3">
+                    <div className="col-4 d-flex region-pais-title-container">
+                        <p className="region-pais">Estados Unidos</p>
                         <EditButton />
                         <DeleteButton />
                     </div>
-                </div>
-            </div>
-            <div className="row region-ciudades d-flex flex-column mt-3">
-                <div className="col d-flex region-ciudad-title-container justify-content-between">
-                    <p className="region-pais">Cordoba</p>
-                    <div>
-                        <EditButton />
-                        <DeleteButton />
+                    <div class="col-1 me-5 add-city-btn-container">
+                        <button className="btn btn-primary">Agregar ciudad</button>
                     </div>
                 </div>
-            </div>
-            <div className="row region-ciudades d-flex flex-column mt-3">
-                <div className="col d-flex region-ciudad-title-container justify-content-between">
-                    <p className="region-pais">Santa Fe</p>
-                    <div>
-                        <EditButton />
-                        <DeleteButton />
+                {/* Ciudades that are part of the region */}
+                <div className="row region-ciudades d-flex flex-column mt-3">
+                    <div className="col d-flex region-ciudad-title-container justify-content-between">
+                        <p className="region-pais">Miami</p>
+                        <div>
+                            <EditButton />
+                            <DeleteButton />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div className="row d-flex justify-content-between mt-3">
-                <div className="col-1">
-                    <h4 className="region-title">Norteamerica</h4>
-                </div>
-                <div className="col-1 me-5 add-country-btn-container">
-                    <button className="btn btn-primary">Agregar pais</button>
-                </div>
-            </div>
-
-            {/* Paises that are part of the region */}
-            <div className="row region-paises d-flex justify-content-between mt-3">
-                <div className="col-4 d-flex region-pais-title-container">
-                    <p className="region-pais">Estados Unidos</p>
-                    <EditButton />
-                    <DeleteButton />
-                </div>
-                <div class="col-1 me-5 add-city-btn-container">
-                    <button className="btn btn-primary">Agregar ciudad</button>
-                </div>
-            </div>
-            {/* Ciudades that are part of the region */}
-            <div className="row region-ciudades d-flex flex-column mt-3">
-                <div className="col d-flex region-ciudad-title-container justify-content-between">
-                    <p className="region-pais">Miami</p>
-                    <div>
-                        <EditButton />
-                        <DeleteButton />
+                <div className="row region-ciudades d-flex flex-column mt-3">
+                    <div className="col d-flex region-ciudad-title-container justify-content-between">
+                        <p className="region-pais">Fargo</p>
+                        <div>
+                            <EditButton />
+                            <DeleteButton />
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="row region-ciudades d-flex flex-column mt-3">
-                <div className="col d-flex region-ciudad-title-container justify-content-between">
-                    <p className="region-pais">Fargo</p>
-                    <div>
-                        <EditButton />
-                        <DeleteButton />
-                    </div>
-                </div>
-            </div>
 
 
 
-        </section>
+            </section>
 
         </>
 

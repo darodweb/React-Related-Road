@@ -15,12 +15,17 @@ label {
   --primary-hover: #104679;
   --secondary: transparent;
   --white: #fff;
+  --warning: #ffc10791
 }
 
 /*Bootstrap overides*/
 .bg-primary, .btn-primary {
   background-color: var(--primary) !important;
 
+}
+
+.btn-warning {
+  background-color: var(--warning);
 }
 
 .btn-outline-secondary {
