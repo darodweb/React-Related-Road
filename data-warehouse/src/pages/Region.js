@@ -18,7 +18,7 @@ const Region = () => {
                 {/* Regions */}
                 <div className="row d-flex justify-content-between mt-3">
                     <div className="col-1">
-                        <h4 className="region-title">Sudamérica</h4>
+                        <h4 className="region-title fw-bold">Sudamérica</h4>
                     </div>
                     <div className="col-1 me-5 add-country-btn-container">
                         <button className="btn btn-primary" >Agregar pais</button>
@@ -28,7 +28,7 @@ const Region = () => {
                 {/* Paises that are part of the region */}
                 <div className="row region-paises d-flex justify-content-between mt-3">
                     <div className="col-4 d-flex region-pais-title-container">
-                        <p className="region-pais">Argentina</p>
+                        <h5 className="region-pais">Argentina</h5>
                         <EditButton />
                         <DeleteButton />
                     </div>
@@ -69,7 +69,7 @@ const Region = () => {
 
                 <div className="row d-flex justify-content-between mt-3">
                     <div className="col-1">
-                        <h4 className="region-title">Norteamerica</h4>
+                        <h4 className="region-title fw-bold">Norteamerica</h4>
                     </div>
                     <div className="col-1 me-5 add-country-btn-container">
                         <button className="btn btn-primary">Agregar pais</button>
