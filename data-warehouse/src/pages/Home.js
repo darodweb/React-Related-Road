@@ -12,7 +12,7 @@ const Home = () => {
         <>
 
             <section className="row">
-                <div class="col-lg-9">
+                <div className="col-lg-9">
                     <SearchBar />
                 </div>
 

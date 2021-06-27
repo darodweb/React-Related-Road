@@ -61,10 +61,10 @@ server.get('/api-docs.json', (req, res) => {
     res.send(swaggerSpec);
 });
 
-server.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+// server.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/index.html');
 
-})
+// })
 
 server.post('/login', authentication.verifyUserLogin, async (req, res) => {
 
@@ -82,7 +82,7 @@ server.post('/login', authentication.verifyUserLogin, async (req, res) => {
             res.send({
                 result: 'Login exitoso',
                 role: usuario.perfil,
-                token
+                token: token
             });
         } else {
             res.send({

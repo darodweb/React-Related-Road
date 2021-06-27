@@ -4,7 +4,7 @@ const SecondaryButton = ({ text }) => {
     return (
 
         <>
-            <button type="button" class="btn btn-secondary secondary-button">{text}  <i class="bi bi-chevron-down"></i></button>
+            <button type="button" className="btn btn-secondary secondary-button">{text}  <i className="bi bi-chevron-down"></i></button>
         </>
     );
 }

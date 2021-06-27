@@ -5,7 +5,7 @@ const PrimaryButton = ({ text }) => {
     return (
 
         <>
-            <button type="button" class="btn btn-primary primary-button">{text}</button>
+            <button type="button" className="btn btn-primary primary-button">{text}</button>
         </>
     );
 }

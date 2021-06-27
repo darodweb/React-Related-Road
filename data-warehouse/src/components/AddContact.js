@@ -18,8 +18,8 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
             </button>
 
 
-            <div class="modal fade" id="add-contact" tabindex="-1" aria-labelledby="add-contact-label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-add-contact">
+            <div className="modal fade" id="add-contact" tabindex="-1" aria-labelledby="add-contact-label" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-add-contact">
                     <div className="modal-content modal-content-wrapper">
                         <div className="modal-header modal-header-add-contact">
                             <h5 className="modal-title modal-title-add-contact fw-bold" id="add-contactLabel">Nuevo contacto</h5>
@@ -58,9 +58,9 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                     <div className="col-12 d-flex">
 
                                         {/* Datalist item 1 */}
-                                        <div class="d-flex flex-column">
-                                            <label for="region" class="form-label label-add-contact fw-bold">Region</label>
-                                            <input class="form-control" list="datalistOptions" id="region" placeholder="Seleccionar region" />
+                                        <div className="d-flex flex-column">
+                                            <label for="region" className="form-label label-add-contact fw-bold">Region</label>
+                                            <input className="form-control" list="datalistOptions" id="region" placeholder="Seleccionar region" />
                                             <datalist id="datalistOptions">
                                                 <option value="Norteamerica" />
                                                 <option value="Suramerica" />
@@ -70,9 +70,9 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                         </div>
 
                                         {/* Datalist item 2 */}
-                                        <div class="d-flex flex-column ms-2">
-                                            <label for="pais" class="form-label label-add-contact fw-bold">Pais</label>
-                                            <input class="form-control" disabled list="datalistOptions" id="pais" placeholder="Seleccionar pais" />
+                                        <div className="d-flex flex-column ms-2">
+                                            <label for="pais" className="form-label label-add-contact fw-bold">Pais</label>
+                                            <input className="form-control" disabled list="datalistOptions" id="pais" placeholder="Seleccionar pais" />
                                             <datalist id="datalistOptions">
                                                 <option value="USA" />
                                                 <option value="Argentina" />
@@ -82,9 +82,9 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                         </div>
 
                                         {/* Datalist item 3 */}
-                                        <div class="d-flex flex-column ms-2">
-                                            <label for="ciudad" class="form-label label-add-contact fw-bold">Ciudad</label>
-                                            <input class="form-control" disabled list="datalistOptions" id="ciudad" placeholder="Seleccionar ciudad" />
+                                        <div className="d-flex flex-column ms-2">
+                                            <label for="ciudad" className="form-label label-add-contact fw-bold">Ciudad</label>
+                                            <input className="form-control" disabled list="datalistOptions" id="ciudad" placeholder="Seleccionar ciudad" />
                                             <datalist id="datalistOptions">
                                                 <option value="La Plata" />
                                                 <option value="Buenos Aires" />
@@ -96,7 +96,7 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                         {/* Input item 4 */}
                                         <div className="btn-group seleccionar-direccion-container d-flex flex-column mx-2">
                                             <label className="mb-2 label-add-contact fw-bold" for="direccion">Direccion</label>
-                                            <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Ingresa una dirección" />
+                                            <input type="text" name="direccion" className="form-control" id="direccion" placeholder="Ingresa una dirección" />
                                         </div>
                                     </div>
                                 </div>
@@ -105,9 +105,9 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                     <div className="col-12 d-flex">
 
                                         {/* Datalist item 5 - Second row*/}
-                                        <div class="d-flex flex-column ms-2">
-                                            <label for="canal-de-contacto" class="form-label label-add-contact fw-bold">Canal de contacto</label>
-                                            <input class="form-control" disabled list="datalistOptions" id="canal-de-contacto" placeholder="Seleccionar canal" />
+                                        <div className="d-flex flex-column ms-2">
+                                            <label for="canal-de-contacto" className="form-label label-add-contact fw-bold">Canal de contacto</label>
+                                            <input className="form-control" disabled list="datalistOptions" id="canal-de-contacto" placeholder="Seleccionar canal" />
                                             <datalist id="datalistOptions">
                                                 <option value="Email" />
                                                 <option value="Telefono" />
@@ -117,9 +117,9 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                         </div>
 
                                         {/* Datalist item 6 - Second row*/}
-                                        <div class="d-flex flex-column ms-2">
-                                            <label for="preferencias" class="form-label label-add-contact fw-bold">Preferencias</label>
-                                            <input class="form-control" disabled list="datalistOptions" id="preferencias" placeholder="Sin preferencia" />
+                                        <div className="d-flex flex-column ms-2">
+                                            <label for="preferencias" className="form-label label-add-contact fw-bold">Preferencias</label>
+                                            <input className="form-control" disabled list="datalistOptions" id="preferencias" placeholder="Sin preferencia" />
                                             <datalist id="datalistOptions">
                                                 <option value="Email" />
                                                 <option value="Telefono" />

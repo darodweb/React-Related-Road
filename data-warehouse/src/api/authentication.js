@@ -34,7 +34,7 @@ module.exports.verifyUserLogin = function (req, res, next) {
         }
     } else {
         return (
-            res.sendFile(__dirname + "index.html")
+            true
         );
     }
 }

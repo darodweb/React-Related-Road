@@ -6,13 +6,13 @@ const ExportContactBtn = () => {
         <>
 
 
-            <div class="btn-group export-btn-container">
-                <button type="button" class="btn btn-secondary dropdown-toggle export-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="btn-group export-btn-container">
+                <button type="button" className="btn btn-secondary dropdown-toggle export-btn" data-bs-toggle="dropdown" aria-expanded="false">
                     Exportar Contactos
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item color-primary" href="#">Exportar seleccionados</a></li>
-                    <li><a class="dropdown-item color-primary" href="#">Todos los filtrados</a></li>
+                <ul className="dropdown-menu">
+                    <li><a className="dropdown-item color-primary" href="#">Exportar seleccionados</a></li>
+                    <li><a className="dropdown-item color-primary" href="#">Todos los filtrados</a></li>
                 </ul>
             </div>
         </>

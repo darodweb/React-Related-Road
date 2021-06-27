@@ -35,7 +35,9 @@ router.post('/api/v1/usuario', async (req, res) => {
     try {
 
         const newUserEmail = req.body.email;
+        console.log(newUserEmail);
         const existingUserEmail = await usuariosModel.model.find({ email: { $eq: newUserEmail } });
+        console.log(existingUserEmail);
         if (existingUserEmail.length === 0) {
             const admin = await actions.create(
                 usuariosModel.model,
@@ -43,7 +45,7 @@ router.post('/api/v1/usuario', async (req, res) => {
             res.json({ Message: `Admin created successfully!`, Admin: `${admin}` });
 
         } else if (newUserEmail === existingUserEmail[0].email) {
-            res.json({ Message: 'Please try with a different email2.' })
+            res.json({ Message: 'Please try with a different email.' })
         }
 
     } catch (err) {
