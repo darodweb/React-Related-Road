@@ -66,7 +66,7 @@ server.get('/api-docs.json', (req, res) => {
 
 // })
 
-server.post('/login', authentication.verifyUserLogin, async (req, res) => {
+server.post('/login', async (req, res) => {
 
     try {
 
@@ -74,9 +74,10 @@ server.post('/login', authentication.verifyUserLogin, async (req, res) => {
         var email = arg.email;
         var contrasena = arg.contrasena;
         // const usuarios = await actions.get(usuariosModel.model, { email, password })
-        const usuario = usuariosModel.model.find({ email: email, contrasena: contrasena });
+        const usuario = await usuariosModel.model.find({ email: email, contrasena: contrasena });
+        console.log(usuario);
         // const tipo = typeof (usuarios);
-        if (typeof (usuario) == "object") {
+        if (usuario.length) {
             var data = { email, contrasena, perfil: usuario.perfil };
             var token = authentication.generateToken(data);
             res.send({

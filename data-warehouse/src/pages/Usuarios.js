@@ -4,7 +4,6 @@ import uuid from 'uuid/dist/v4';
 import axios from 'axios';
 import { POST_USUARIO_URL } from '../constants/constants';
 
-
 const Usuarios = () => {
     const [usuario, setUsuario] = useState({
         nombre: "",
@@ -15,8 +14,6 @@ const Usuarios = () => {
         isLoggedIn: false
     });
     const [error, setError] = useState(false);
-
-
 
 
     const handleChange = (e) => {
@@ -54,19 +51,12 @@ const Usuarios = () => {
 
         //Reset form
 
-
-        //Get newly created Usuario
-
-
     }
 
-
-
-
-    //action="/api/v1/usuario" method="POST"
     return (
 
         <>
+
             {error ? alert('Todos los campos son obligatorios') : null}
 
             <form onSubmit={submitUsuario} className=" text-center  usuarios-container">
@@ -99,6 +89,7 @@ const Usuarios = () => {
 
                     <div className="d-flex ">
                         <button type="submit" className="btn btn-primary mt-4 ms-2" >Crear</button>
+                        <button type="button" className="btn btn-secondary mt-4 ms-2" data-bs-dismiss="modal">Cancelar</button>
                     </div>
 
                 </div>

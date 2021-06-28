@@ -1,7 +1,33 @@
-import './Header.scss'
+import { useState, useEffect } from 'react';
+import './Header.scss';
 import { Link } from 'react-router-dom';
+import Login from '../pages/Login';
+
 
 const Header = () => {
+    const [token, setToken] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+
+        function checkForToken() {
+            setToken(window.localStorage.getItem('token'));
+            if (token) {
+                setIsLoggedIn(true);
+            }
+        }
+        checkForToken();
+
+    }, [token])
+
+
+    const logOut = () => {
+        setToken(window.localStorage.clear());
+        setIsLoggedIn(false);
+    }
+
+
+
     return (
         <>
 
@@ -14,6 +40,9 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse justify-content-lg-end me-5" id="navbarNav">
                         <ul className="navbar-nav">
+
+                            <li className="nav-link text-light  header-menu-links mx-2" aria-current="page"><Link to="/login"><span className="login">Log In</span></Link></li>
+
                             <li className="nav-link active text-light header-menu-links mx-2" aria-current="page"><Link to="/contactos">Contactos</Link></li>
                             <li className="nav-link text-light mx-2 header-menu-links"><Link to="/companies">Compañias</Link></li>
                             <li className="nav-link text-light mx-2 header-menu-links"><Link to="/usuarios">Usuarios</Link></li>
@@ -22,8 +51,6 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-
-
 
         </>
     );
