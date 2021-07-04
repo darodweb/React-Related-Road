@@ -49,6 +49,8 @@ const Login = () => {
                 .then(res => {
                     let token = String(res.data.token);
                     window.localStorage.setItem('token', token);
+                    window.localStorage.setItem('ID', email);
+
                     setToken(token);
                     console.log(res.data);
                     console.log(res.data.token)
@@ -57,6 +59,7 @@ const Login = () => {
                 email: "",
                 contrasena: ""
             })
+
 
         } catch (err) {
             setLoginError(true);

@@ -11,6 +11,21 @@ import Login from './pages/Login';
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState("");
+
+  //Checks if user is logged in
+  useEffect(() => {
+    let _hasToken = localStorage.getItem("token");
+    if (_hasToken !== null) {
+      setIsLoggedIn(true);
+      setToken(_hasToken);
+
+    } else {
+      return true
+    }
+
+  }, [token])
 
 
 
@@ -20,11 +35,17 @@ function App() {
     <>
 
       <BrowserRouter>
-        <Header />
+        <Header
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setToken={setToken}
+        />
         <Switch>
 
           <Route exact path="/">
-            <Home />
+            <Home
+              isLoggedIn={isLoggedIn}
+            />
           </Route>
 
           <Route exact path="/companies">
@@ -40,7 +61,9 @@ function App() {
           </Route>
 
           <Route exact path="/usuarios">
-            <Usuarios />
+            <Usuarios
+              token={token}
+            />
           </Route>
 
           <Route exact path="/login">

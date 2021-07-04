@@ -4,6 +4,19 @@ import './AddContact.scss';
 const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
     direccion, canal_de_contacto, cuenta_de_usuario, preferencias }) => {
 
+
+
+    // (function checkUserLogIn() {
+    //     let _checkForToken = localStorage.getItem("token");
+    //     if (isLoggedIn == true) {
+    //         return true
+    //     } else {
+    //         alert("Debe Iniciar session")
+    //         return false;
+    //     }
+    // })();
+
+
     //List of regions, paises, and ciudad will be fetched from the API.
 
 
@@ -40,15 +53,15 @@ const AddContact = ({ nombre, apellido, cargo, email, region, pais, ciudad,
                                 </div>
                                 <div>
                                     <label for="cargo" className="form-label d-block label-add-contact">Cargo</label>
-                                    <input type="text" id="last-name" name="cargo" className="mx-2 p-1" />
+                                    <input type="text" id="cargo" name="cargo" className="mx-2 p-1" />
                                 </div>
                                 <div>
                                     <label for="email" className="form-label d-block label-add-contact">Email</label>
-                                    <input type="text" id="last-name" name="email" className="mx-2 p-1" />
+                                    <input type="text" id="contact-email" name="email" className="mx-2 p-1" />
                                 </div>
                                 <div>
                                     <label for="company" className="form-label d-block label-add-contact ">Compañia</label>
-                                    <input type="text" id="last-name" name="company" className="mx-2 p-1" placeholder="Ingresar nombre de compañia" />
+                                    <input type="text" id="companias" name="company" className="mx-2 p-1" placeholder="Ingresar nombre de compañia" />
                                 </div>
                             </div>
 

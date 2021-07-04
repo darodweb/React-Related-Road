@@ -3,28 +3,29 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import Login from '../pages/Login';
 
+const Header = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
+    // const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [userToken, setUserToken] = useState("");
 
-const Header = () => {
-    const [token, setToken] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        function checkForToken() {
-            setToken(window.localStorage.getItem('token'));
-            if (token) {
-                setIsLoggedIn(true);
-            }
-        }
-        checkForToken();
+    //     (function checkLoggedInStatus() {
+    //         if (isLoggedIn !== null) {
+    //             setUserToken(_currentToken);
+    //             setIsLoggedIn(true);
+    //         }
 
-    }, [token])
+    //     })();
+
+    // }, [isLoggedIn])
 
 
     const logOut = () => {
         setToken(window.localStorage.clear());
         setIsLoggedIn(false);
     }
+
 
 
 
@@ -41,11 +42,21 @@ const Header = () => {
                     <div className="collapse navbar-collapse justify-content-lg-end me-5" id="navbarNav">
                         <ul className="navbar-nav">
 
-                            <li className="nav-link text-light  header-menu-links mx-2" aria-current="page"><Link to="/login"><span className="login">Log In</span></Link></li>
+                            {isLoggedIn ?
+                                <li className="nav-link text-light  header-menu-links mx-2" aria-current="page"><span className="login" onClick={logOut}>Cerrar Sesion</span></li>
+                                :
+                                <li className="nav-link text-light  header-menu-links mx-2" aria-current="page"><Link to="/login"><span className="login">Log In</span></Link></li>
+                            }
 
-                            <li className="nav-link active text-light header-menu-links mx-2" aria-current="page"><Link to="/contactos">Contactos</Link></li>
+                            {isLoggedIn ?
+                                <li className="nav-link active text-light header-menu-links mx-2" aria-current="page"><Link to="/contactos">Contactos</Link></li>
+                                : null}
+
                             <li className="nav-link text-light mx-2 header-menu-links"><Link to="/companies">Compañias</Link></li>
-                            <li className="nav-link text-light mx-2 header-menu-links"><Link to="/usuarios">Usuarios</Link></li>
+                            {isLoggedIn ?
+                                <li className="nav-link text-light mx-2 header-menu-links"><Link to="/usuarios">Usuarios</Link></li>
+                                : null}
+
                             <li className="nav-link text-light mx-2 header-menu-links"><Link to="/region">Region/Ciudad</Link></li>
                         </ul>
                     </div>
