@@ -12,6 +12,7 @@ function decode(token) {
 
 module.exports.verifyUser = function (req, res, next) {
     var token = req.headers.authorization;
+    console.log(token);
     if (token) {
         var decoded = decode(token, sign);
         if (decoded) {

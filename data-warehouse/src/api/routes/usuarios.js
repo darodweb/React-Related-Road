@@ -5,7 +5,7 @@ var authentication = require('../authentication');
 var usuariosModel = require('../models/usuariosModel');
 
 
-router.get('/api/v1/usuarios', authentication.verifyUser, async (req, res) => {
+router.get('/api/v1/usuarios', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const usuarios = await actions.get(usuariosModel.model);
         res.send(usuarios);
@@ -17,7 +17,7 @@ router.get('/api/v1/usuarios', authentication.verifyUser, async (req, res) => {
 
 router.get('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
     try {
-        const usuario = await actions.get(usuariosModel.model, { _id: req.params.id });
+        const usuario = await actions.get(usuariosModel.model, { email: req.params.id });
         if (usuario.length <= 0) {
             res.json({ Message: "Usuario not found" })
         } else {

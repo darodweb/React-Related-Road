@@ -6,50 +6,44 @@ import { POST_USUARIO_URL } from '../constants/constants';
 import Header from '../components/Header';
 import { useHistory } from 'react-router-dom';
 import CrearUsuario from './CrearUsuario';
-import { GET_USUARIO_URL } from '../constants/constants';
+import { GET_USUARIOS_URL } from '../constants/constants';
 
-const Usuarios = ({ token }) => {
-    const [ID, setID] = useState("");
-    const { usuario, setUsuario } = useState({
-        nombre: "",
-        apellido: "",
-        email: "",
-        contrasena: ""
-    })
+const Usuarios = () => {
+    const [usuarios, setUsuarios] = useState([]);
+    const [currentToken, setCurrentToken] = useState("");
 
-    //Get current ID (email) from localstorage
+
+    // const { nombre, apellido, email, perfil, contrasena } = usuario;
+
     useEffect(() => {
-        (function getID() {
-            let _currentID = localStorage.getItem('ID');
-            setID(_currentID);
+
+        //Get current token and email(ID) from local storage
+        (function getToken() {
+            let token = localStorage.getItem("token");
+            console.log(token);
+            setCurrentToken(token);
         })();
 
-        // Query and display user credential
-        (async function getUserInfo() {
+        // Query API and display user credential
 
-            try {
-                const response = await axios.get(`${GET_USUARIO_URL}` + ID, {
-                    auth: {
-                        token: token
-                    }
+        try {
+
+            async function getUsers() {
+                const response = await axios({
+                    method: "GET", url: GET_USUARIOS_URL,
+                    headers: { "Authorization": `${currentToken}` }
                 })
-                console.log(response);
-            } catch (err) {
-                console.error(err);
+                let users = response.data;
+                setUsuarios(...usuarios, users);
+                console.log(usuarios);
             }
+            getUsers();
 
+        } catch (err) {
+            console.error(err);
+        };
 
-        })()
-
-
-
-
-    }, [])
-
-
-
-
-
+    }, [currentToken])
 
 
 
@@ -57,7 +51,17 @@ const Usuarios = ({ token }) => {
 
         <>
 
-            <CrearUsuario />
+            <div className="container">
+
+                {(usuarios.length > 0) ?
+                    usuarios.map((usuario) => (
+                        <div className="" key={usuario._id}>
+                            <p>{usuario.nombre}, {usuario.apellido} </p>
+                            <p>{usuario.email}</p>
+                            <p>{usuario.perfil}</p>
+                        </div>
+                    )) : null}
+            </div>
 
         </>
 
