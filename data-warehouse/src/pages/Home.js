@@ -8,7 +8,7 @@ import ContactContainer from '../components/ContactContainer';
 import Header from '../components/Header';
 import Login from './Login';
 
-const Home = ({ isLoggedIn, }) => {
+const Home = ({ isLoggedIn }) => {
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
     // const [token, setToken] = useState("");
 
