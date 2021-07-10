@@ -54,11 +54,24 @@ router.post('/api/v1/usuario', async (req, res) => {
 
 });
 
-router.patch('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
+router.patch('/api/v1/usuario/:id', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         await actions.update(usuariosModel.model, req.params.id, req.body);
         const usuarioUpdated = await actions.get(usuariosModel.model, { _id: req.params.id });
         res.json({ usuarioUpdated });
+        console.log(usuarioUpdated);
+    } catch (err) {
+        res.json({ Error: err.message })
+    }
+
+});
+
+router.put('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
+    try {
+        await actions.update(usuariosModel.model, req.params.id, req.body);
+        const usuarioUpdated = await actions.get(usuariosModel.model, { _id: req.params.id });
+        res.json({ usuarioUpdated });
+        console.log(usuarioUpdated);
     } catch (err) {
         res.json({ Error: err.message })
     }
@@ -66,7 +79,7 @@ router.patch('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) 
 });
 
 router.delete('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
-    await actions.delete(usuariosModel.model, req.params.id, req.body);
+    await actions.delete(usuariosModel.model, req.params.id);
     res.json({ Message: 'Usuario deleted successfully.' });
 });
 

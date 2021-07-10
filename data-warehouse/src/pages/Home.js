@@ -21,10 +21,6 @@ const Home = ({ isLoggedIn, }) => {
         }
     })()
 
-    // window.location.reload();
-
-
-
 
 
     return (

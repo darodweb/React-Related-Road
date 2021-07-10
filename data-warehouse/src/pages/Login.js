@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Login.scss';
-import Usuarios from '../pages/Usuarios';
+import CrearUsuario from '../pages/CrearUsuario';
 import { POST_LOGIN_URL } from '../constants/constants';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -97,7 +97,7 @@ const Login = () => {
             <div className="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registeModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">
-                        <Usuarios />
+                        <CrearUsuario />
                     </div>
                 </div>
             </div>

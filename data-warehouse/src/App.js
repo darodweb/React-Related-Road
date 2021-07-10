@@ -7,6 +7,8 @@ import Company from './pages/Company';
 import Contactos from './pages/Contactos';
 import Region from './pages/Region';
 import Login from './pages/Login';
+import CrearUsuario from './pages/CrearUsuario';
+import EditUsuario from './pages/EditUsuario';
 
 
 
@@ -62,12 +64,19 @@ function App() {
 
           <Route exact path="/usuarios">
             <Usuarios
-              token={token}
             />
           </Route>
 
           <Route exact path="/login">
             <Login />
+          </Route>
+
+          <Route exact path="/crear-usuario">
+            <CrearUsuario />
+          </Route>
+
+          <Route exact path="/editar-usuario">
+            <EditUsuario />
           </Route>
 
 
