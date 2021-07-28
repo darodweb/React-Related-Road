@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import Header from './components/Header';
 import Usuarios from './pages/Usuarios';
 import Company from './pages/Company';

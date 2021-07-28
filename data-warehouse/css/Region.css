@@ -1,0 +1,21 @@
+.region-container {
+  padding: 0 50px;
+}
+
+.add-region-btn-container {
+  margin-top: 59px !important;
+}
+
+.region-title {
+  margin-left: 50px;
+}
+
+.region-pais-title-container {
+  margin-left: 5rem;
+}
+
+.region-ciudad-title-container {
+  margin-left: 10rem;
+  width: 250px;
+}
+/*# sourceMappingURL=Region.css.map */

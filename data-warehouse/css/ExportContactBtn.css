@@ -1,0 +1,20 @@
+.export-btn-container {
+  margin-top: 59px !important;
+}
+
+.color-primary {
+  color: var(--primary);
+}
+
+.export-btn:active {
+  color: var(--primary) !important;
+  background-color: transparent !important;
+  border-color: none !important;
+}
+
+.export-btn:focus {
+  color: var(--primary) !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+/*# sourceMappingURL=ExportContactBtn.css.map */

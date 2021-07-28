@@ -1,0 +1,26 @@
+.login-container {
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 15vh;
+}
+
+.form-container {
+  padding: 30px;
+  width: 350px;
+}
+
+.login {
+  background-color: white;
+  border-radius: 3px;
+  color: var(--primary);
+  padding: 5px 20px;
+}
+
+.warning {
+  background-color: rgba(255, 0, 0, 0.466);
+  padding: 10px 5px;
+  border-radius: 3px;
+}
+/*# sourceMappingURL=Login.css.map */

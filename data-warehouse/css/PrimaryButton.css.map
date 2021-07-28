@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAC;EACZ,UAAU,EAAE,eAAe;EAC1B,YAAY,EAAE,IAAI;CACtB",
+    "sources": [
+        "../src/components/PrimaryButton.scss"
+    ],
+    "names": [],
+    "file": "PrimaryButton.css"
+}

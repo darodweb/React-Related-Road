@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,KAAK,EAAE,eAAe;EACtB,MAAM,EAAE,eAAe;EACvB,OAAO,EAAE,OAAO;CACnB;;AAED,AAAA,mBAAmB,CAAC;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "../src/components/DeleteButton.scss"
+    ],
+    "names": [],
+    "file": "DeleteButton.css"
+}

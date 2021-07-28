@@ -1,0 +1,17 @@
+.navbar {
+  height: 64px;
+}
+
+.navbar-nav > .nav-link {
+  font-size: 14px;
+}
+
+.navbar-brand {
+  margin-left: 29.4px;
+}
+
+.header-menu-links a:active, a:link, a:visited {
+  color: white !important;
+  text-decoration: none;
+}
+/*# sourceMappingURL=Header.css.map */

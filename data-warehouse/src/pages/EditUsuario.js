@@ -1,4 +1,5 @@
 import './CrearUsuario.scss';
+import './EditUsuario.scss';
 import { useState, useEffect } from 'react';
 import uuid from 'uuid/dist/v4';
 import axios from 'axios';

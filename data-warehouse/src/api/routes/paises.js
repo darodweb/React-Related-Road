@@ -5,17 +5,17 @@ var authentication = require('../authentication');
 var paisesModel = require('../models/paisesModel');
 
 
-router.get('/api/v1/paises/:idRegion', authentication.verifyUser, async (req, res) => {
+router.get('/api/v1/paises/:idRegion', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const pais = await actions.get(paisesModel.model, { idRegion: req.params.idRegion });
-        res.json({ Paises: pais })
+        res.send(pais);
     } catch (err) {
         res.json({ Error: err.message })
     }
 
 });
 
-router.get('/api/v1/paises', authentication.verifyUser, async (req, res) => {
+router.get('/api/v1/paises', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const paises = await paisesModel.model.aggregate([
             {
@@ -27,7 +27,7 @@ router.get('/api/v1/paises', authentication.verifyUser, async (req, res) => {
                 }
             }
         ]).exec();
-        res.json({ paises });
+        res.send(paises);
 
     } catch (err) {
         res.json({ Error: err.message })

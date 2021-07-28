@@ -1,0 +1,39 @@
+.contact-column {
+  width: 250px;
+  height: 56px;
+}
+
+td {
+  padding-top: 16px !important;
+}
+
+.contact-row {
+  padding: 15px 0 !important;
+  height: 56px !important;
+}
+
+.contact-email, .contact-region {
+  font-size: 12px;
+}
+
+.contact-name, .contact-pais-name {
+  margin-bottom: 0;
+}
+
+.canal-preferido-container {
+  width: 64px;
+  height: 24px;
+  background-color: rgba(6, 132, 249, 0.1);
+  border-radius: 4px;
+  color: #0683F9;
+  padding: 4px 8px;
+}
+
+.canal-preferido-nombre, .canal-preferido-nombre {
+  font-size: 11px;
+}
+
+.acciones-btn {
+  margin-top: -5px;
+}
+/*# sourceMappingURL=Contact.css.map */

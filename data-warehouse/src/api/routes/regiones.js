@@ -4,11 +4,11 @@ var actions = require('../database/actions/actions');
 var authentication = require('../authentication');
 var regionesModel = require('../models/regionesModel');
 
-router.get('/api/v1/regiones', authentication.verifyUser, async (req, res) => {
+router.get('/api/v1/regiones', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         const regiones = await actions.get(regionesModel.model);
-        res.json({ 'Regiones': regiones });
+        res.send(regiones);
 
     } catch (err) {
         res.json({ Error: err.message })
@@ -23,7 +23,7 @@ router.get('/api/v1/region/:id', authentication.verifyUser, async (req, res) => 
         if (region.length <= 0) {
             res.json({ Message: "Region not found" })
         } else {
-            res.json({ 'Result': region });
+            res.json(region);
         }
 
     } catch (err) {

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,mBAAmB,CAAC;EAChB,MAAM,EAAE,MAAM;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,IAAI;EACpB,aAAa,EAAE,IAAI;EACnB,UAAU,EAAE,IAAI;CACnB;;AAED,AAAA,UAAU,CAAA;EACN,MAAM,EAAE,SAAS;CACpB",
+    "sources": [
+        "../src/pages/Usuarios.scss"
+    ],
+    "names": [],
+    "file": "Usuarios.css"
+}

@@ -6,7 +6,7 @@ var ciudadesModel = require('../models/ciudadesModel');
 const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
-router.get('/api/v1/ciudades', authentication.verifyUser, async (req, res) => {
+router.get('/api/v1/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         const ciudades = await ciudadesModel.model.aggregate([

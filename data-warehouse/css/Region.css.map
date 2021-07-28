@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,iBAAiB,CAAC;EAClB,OAAO,EAAE,MAAM;CACd;;AAED,AAAA,yBAAyB,CAAC;EACtB,UAAU,EAAE,eAAe;CAE9B;;AAED,AAAA,aAAa,CAAC;EACV,WAAW,EAAE,IAAI;CACpB;;AAGD,AAAA,4BAA4B,CAC3B;EACG,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,8BAA8B,CAAC;EAC3B,WAAW,EAAE,KAAK;EAClB,KAAK,EAAE,KAAK;CACf",
+    "sources": [
+        "../src/pages/Region.scss"
+    ],
+    "names": [],
+    "file": "Region.css"
+}
