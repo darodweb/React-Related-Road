@@ -1,5 +1,5 @@
-# Full stack MERN app for managing contacts
-### Tech stack used: MongoDB, Express, React, Node.
+# Aplicacion web MERN
+### Technologies usadas: MongoDB, Express, React, Node.
 
 ### Getting started
 1. Iniciar el servidor backend abriendo un terminal y ejecutar: nodemon src/api/server.js 
