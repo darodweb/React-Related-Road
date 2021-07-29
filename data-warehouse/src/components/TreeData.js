@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { GET_REGIONS_URL, GET_PAISES_URL, GET_CIUDADES_URL } from '../constants/constants';
-
+import SortableTree from 'react-sortable-tree';
+import 'react-sortable-tree/style.css';
 
 
 const TreeData = () => {
@@ -10,12 +11,16 @@ const TreeData = () => {
     const [ciudad, setCiudad] = useState([]);
     const [currentToken, setCurrentToken] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const [treeData, setTreeData] = useState({
 
-    //QUERY REGION, PAIS AND CIUDAD API AND STORE IN STATE.
+    })
+
 
     useEffect(() => {
+
         setCurrentToken(window.localStorage.getItem('token'));
 
+        // Get regiones
         try {
             (async function getRegiones() {
                 const response = await axios({
@@ -28,11 +33,12 @@ const TreeData = () => {
                 console.log(region);
             })();
 
-
-
         } catch (err) {
             console.error(err);
         };
+
+
+        // Get paises
 
         try {
 
@@ -52,6 +58,9 @@ const TreeData = () => {
             console.error(err);
         };
 
+
+        //Get ciudades
+
         try {
 
             (async function getCiudades() {
@@ -70,11 +79,14 @@ const TreeData = () => {
             console.error(err);
         };
 
+
     }, [])
 
 
-    //Get list of regions
-    // Get list of 
+
+
+
+
 
 
     //JSON OBJECT TO BUILD THE TREE
@@ -82,27 +94,62 @@ const TreeData = () => {
 
     const data = [
         {
-            key: region,
-            id: _id,
-            node: [
+            title: 'Region', expanded: true, children: [
                 {
-                    key: pais,
-                    id: _id,
-                    node: [
+                    title: "Norteamerica", expanded: true, children: [
                         {
-                            key: ciudad,
-                            id: _id,
-                        }
-                    ]
-                }
-            ]
+                            title: "USA", expanded: true, children: [
+                                { title: "Miami" }, { title: "Fargo" }]
+                        },]
+                },
+                {
+                    title: "Suramerica", expanded: true, children: [
+                        {
+                            title: "Argentina", expanded: true, children: [
+                                { title: "La Plata" }, { title: "Cordoba" }]
+                        },]
+                },
+            ],
         }
     ]
+
+    // const data = [
+    //     {
+    //         title: 'Region', expanded: true, children: [
+    //             {
+    //                 title: region, expanded: true, children: [
+    //                     {
+    //                         title: pais, expanded: true, children: [
+    //                             { title: ciudad }, { title: ciudad }]
+    //                     },]
+    //             },
+    //             {
+    //                 title: region, expanded: true, children: [
+    //                     {
+    //                         title: pais, expanded: true, children: [
+    //                             { title: ciudad }, { title: ciudad }]
+    //                     },]
+    //             },
+    //         ],
+    //     }
+    // ]
+
+    console.log(data)
+
+    function updateTree(treeData) {
+        setTreeData({ treeData })
+    }
+
 
     return (
         <>
 
-
+            <div div style={{ height: "100vh" }}>
+                <SortableTree
+                    treeData={data}
+                    onChange={() => updateTree(data)}
+                />
+            </div>
 
         </>
 

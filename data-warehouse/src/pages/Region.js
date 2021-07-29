@@ -7,6 +7,7 @@ import { GET_REGIONS_URL, GET_PAISES_URL, GET_CIUDADES_URL } from '../constants/
 import Loader from '../components/Loader';
 import SortableTree from 'react-sortable-tree';
 import 'react-sortable-tree/style.css';
+import TreeData from '../components/TreeData';
 
 const Region = () => {
     const [region, setRegion] = useState([]);
@@ -122,10 +123,12 @@ const Region = () => {
                     </div>
                 </div>
                 <div style={{ height: "100vh" }}>
-                    <SortableTree
+                    {/* <SortableTree
                         treeData={treeData}
                         onChange={() => updateTree(treeData)}
-                    />
+                    /> */}
+
+                    <TreeData />
                 </div>
 
                 {/* {(region.length > 0) ?
