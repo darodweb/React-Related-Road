@@ -3,7 +3,7 @@
     padding: 20px;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
-    margin-top: 15vh;
+    
 }
 
 .form-container {
@@ -23,4 +23,11 @@
     padding: 10px 5px;
     border-radius: 3px;
     
+}
+
+.btn-secondary a {
+    color: #1d72c2 !important;
+}
+.btn-secondary a:hover {
+    color: whitesmoke !important;
 }

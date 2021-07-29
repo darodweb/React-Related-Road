@@ -3,7 +3,7 @@ import './Login.scss';
 import CrearUsuario from '../pages/CrearUsuario';
 import { POST_LOGIN_URL } from '../constants/constants';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Login = () => {
     let history = useHistory();
@@ -88,19 +88,12 @@ const Login = () => {
 
                     <div className="d-flex ">
                         <button className="btn btn-primary mt-4 ms-2" >Ingresar</button>
-                        <a className="btn btn-secondary mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#registerModal" >Registrarse</a>
+                        <button className="btn btn-secondary mt-4 ms-2"><Link to="/crear-usuario">Registrarse</Link></button>
                     </div>
                 </div>
             </form>
 
-            {/* <!-- Modal --> */}
-            <div className="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registeModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div className="modal-content">
-                        <CrearUsuario />
-                    </div>
-                </div>
-            </div>
+
 
             {token ? history.push('/') : null}
 
