@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
 const schema = {
-    nombre: String,
+    pais: String,
     idRegion: ObjectId,
 }
 

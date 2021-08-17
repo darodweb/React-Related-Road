@@ -6,6 +6,8 @@ var ciudadesModel = require('../models/ciudadesModel');
 const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
+
+//Trae todas las ciudades
 router.get('/api/v1/ciudades', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
@@ -25,7 +27,7 @@ router.get('/api/v1/ciudades', /*authentication.verifyUser,*/ async (req, res) =
     }
 });
 
-
+//Trae todas la ciudades de un pais
 router.get('/api/v1/ciudades/:idPais', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudades = await ciudadesModel.model.aggregate([
@@ -50,6 +52,7 @@ router.get('/api/v1/ciudades/:idPais', /*authentication.verifyUser,*/ async (req
 });
 
 
+//Trae una ciudad por ID
 router.get('/api/v1/ciudad/:idCiudad', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudad = await actions.get(ciudadesModel.model, { _id: req.params.idCiudad });
@@ -60,6 +63,7 @@ router.get('/api/v1/ciudad/:idCiudad', /*authentication.verifyUser,*/ async (req
 
 });
 
+//Crea una nueva ciudad
 router.post('/api/v1/ciudad', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const ciudad = await actions.create(
@@ -72,7 +76,8 @@ router.post('/api/v1/ciudad', /*authentication.verifyUser,*/ async (req, res) =>
 
 });
 
-router.patch('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
+//Actualiza un campo de ciudad por ID
+router.patch('/api/v1/ciudad/:id', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         await actions.update(ciudadesModel.model, req.params.id, req.body);
@@ -83,7 +88,8 @@ router.patch('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) =
     }
 });
 
-router.put('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
+//Actualiza una ciudad por ID
+router.put('/api/v1/ciudad/:id', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         await actions.update(ciudadesModel.model, req.params.id, req.body);
@@ -95,7 +101,8 @@ router.put('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => 
     }
 });
 
-router.delete('/api/v1/ciudad/:id', authentication.verifyUser, async (req, res) => {
+//Elimina una ciudad por ID
+router.delete('/api/v1/ciudad/:id', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         await actions.delete(ciudadesModel.model, req.params.id, req.body);

@@ -5,6 +5,7 @@ var authentication = require('../authentication');
 var contactosModel = require('../models/contactosModel');
 
 
+//Trae todOs los contactos
 router.get('/api/v1/contactos', authentication.verifyUser, async (req, res) => {
 
     try {
@@ -24,6 +25,7 @@ router.get('/api/v1/contactos', authentication.verifyUser, async (req, res) => {
     }
 });
 
+//Trae un contacto por ID
 router.get('/api/v1/contacto/:id', authentication.verifyUser, async (req, res) => {
     try {
         const contacto = await actions.get(contactosModel.model, { _id: req.params.id });
@@ -38,7 +40,7 @@ router.get('/api/v1/contacto/:id', authentication.verifyUser, async (req, res) =
     }
 });
 
-
+//Actualiza un contacto por ID
 router.post('/api/v1/contacto', authentication.verifyUser, async (req, res) => {
 
     try {
@@ -59,6 +61,7 @@ router.post('/api/v1/contacto', authentication.verifyUser, async (req, res) => {
 
 });
 
+//Actualiza un campo de contacto por ID
 router.patch('/api/v1/contacto/:id', authentication.verifyUser, async (req, res) => {
     try {
         await actions.update(contactosModel.model, req.params.id, req.body);
@@ -70,6 +73,7 @@ router.patch('/api/v1/contacto/:id', authentication.verifyUser, async (req, res)
 
 });
 
+//Actualiza un contacto por ID
 router.put('/api/v1/contacto/:id', authentication.verifyUser, async (req, res) => {
     try {
         await actions.update(contactosModel.model, req.params.id, req.body);
@@ -81,6 +85,8 @@ router.put('/api/v1/contacto/:id', authentication.verifyUser, async (req, res) =
 
 });
 
+
+//Elimina un contacto por ID
 router.delete('/api/v1/contacto/:id', authentication.verifyUser, async (req, res) => {
     await actions.delete(contactosModel.model, req.params.id, req.body);
     res.json({ Message: 'Record deleted successfully.' });

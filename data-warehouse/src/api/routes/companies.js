@@ -4,7 +4,9 @@ var actions = require('../database/actions/actions');
 var authentication = require('../authentication');
 var companiesModel = require('../models/companiesModel');
 
-router.get('/api/v1/companies', authentication.verifyUser, async (req, res) => {
+
+//Trae todas las compañias de la BD
+router.get('/api/v1/companies', /* authentication.verifyUser,*/ async (req, res) => {
 
     try {
         const companies = await companiesModel.model.aggregate([
@@ -23,6 +25,7 @@ router.get('/api/v1/companies', authentication.verifyUser, async (req, res) => {
     }
 });
 
+//Trae una compañia por ID
 router.get('/api/v1/company/:id', authentication.verifyUser, async (req, res) => {
 
     try {
@@ -39,6 +42,7 @@ router.get('/api/v1/company/:id', authentication.verifyUser, async (req, res) =>
 
 });
 
+//Crea una nueva compañia
 router.post('/api/v1/company', authentication.verifyUser, async (req, res) => {
     try {
         const company = await actions.create(companiesModel.model, req.body);
@@ -49,6 +53,7 @@ router.post('/api/v1/company', authentication.verifyUser, async (req, res) => {
     }
 });
 
+//Actualiza una compañia por ID
 router.put('/api/v1/company/:id', authentication.verifyUser, async (req, res) => {
     try {
         await actions.update(companiesModel.model, req.params.id, req.body);
@@ -60,6 +65,8 @@ router.put('/api/v1/company/:id', authentication.verifyUser, async (req, res) =>
     }
 
 });
+
+//Actualiza un campo de una compañia por ID
 router.patch('/api/v1/company/:id', authentication.verifyUser, async (req, res) => {
     try {
         await actions.update(companiesModel.model, req.params.id, req.body);
@@ -72,6 +79,7 @@ router.patch('/api/v1/company/:id', authentication.verifyUser, async (req, res) 
 
 });
 
+//Elimina una compañia por ID
 router.delete('/api/v1/company/:id', authentication.verifyUser, async (req, res) => {
     try {
         await actions.delete(companiesModel.model, req.params.id, req.body);

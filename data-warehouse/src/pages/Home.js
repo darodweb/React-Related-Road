@@ -26,20 +26,13 @@ const Home = ({ isLoggedIn }) => {
     return (
         <>
 
-            {/* <Header
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
-                setToken={setToken}
-            /> */}
 
             <section className="row">
                 <div className="col-lg-9">
                     <SearchBar />
                 </div>
 
-                {/* <div className="col-lg-2 d-flex ">
 
-                </div> */}
                 <div className="col-lg-3 d-flex justify-content-end" >
                     <div className="mx-1">
                         <UploadButton />

@@ -4,6 +4,8 @@ var actions = require('../database/actions/actions');
 var authentication = require('../authentication');
 var regionesModel = require('../models/regionesModel');
 
+
+//Trae todas las regiones
 router.get('/api/v1/regiones', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
@@ -16,7 +18,8 @@ router.get('/api/v1/regiones', /*authentication.verifyUser,*/ async (req, res) =
 
 });
 
-router.get('/api/v1/region/:id', authentication.verifyUser, async (req, res) => {
+//Trae una  region por ID
+router.get('/api/v1/region/:id', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         const region = await actions.get(regionesModel.model, { _id: req.params.id });
@@ -32,7 +35,8 @@ router.get('/api/v1/region/:id', authentication.verifyUser, async (req, res) => 
 
 });
 
-router.post('/api/v1/region', authentication.verifyUser, async (req, res) => {
+//Crea una nueva region
+router.post('/api/v1/region', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const region = await actions.create(regionesModel.model, req.body);
         res.json({ Message: `Region was successfully created`, Region: region, });
@@ -42,7 +46,8 @@ router.post('/api/v1/region', authentication.verifyUser, async (req, res) => {
     }
 });
 
-router.put('/api/v1/region/:id', authentication.verifyUser, async (req, res) => {
+// Actualiza una region por ID
+router.put('/api/v1/region/:id', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         await actions.update(regionesModel.model, req.params.id, req.body);
         const regionUpdated = await actions.get(regionesModel.model, { _id: req.params.id });
@@ -53,7 +58,9 @@ router.put('/api/v1/region/:id', authentication.verifyUser, async (req, res) => 
     }
 
 });
-router.patch('/api/v1/region/:id', authentication.verifyUser, async (req, res) => {
+
+//Actualiza un campo de region por ID
+router.patch('/api/v1/region/:id', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         await actions.update(regionesModel.model, req.params.id, req.body);
         const regionUpdated = await actions.get(regionesModel.model, { _id: req.params.id });
@@ -65,7 +72,8 @@ router.patch('/api/v1/region/:id', authentication.verifyUser, async (req, res) =
 
 });
 
-router.delete('/api/v1/region/:id', authentication.verifyUser, async (req, res) => {
+//Elimina region por ID
+router.delete('/api/v1/region/:id', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         await actions.delete(regionesModel.model, req.params.id, req.body);
         res.json({ Message: 'Region deleted successfully.' });

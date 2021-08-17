@@ -3,6 +3,10 @@
   padding: 20px;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
-  margin-top: 15vh;
+  margin-top: 10px;
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: unset !important;
 }
 /*# sourceMappingURL=CrearUsuario.css.map */

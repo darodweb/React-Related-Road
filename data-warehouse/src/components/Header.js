@@ -7,31 +7,24 @@ const Header = ({ isLoggedIn, setIsLoggedIn, setToken }) => {
     // const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [userToken, setUserToken] = useState("");
 
+    console.log(isLoggedIn);
 
-    // useEffect(() => {
-
-    //     (function checkLoggedInStatus() {
-    //         if (isLoggedIn !== null) {
-    //             setUserToken(_currentToken);
-    //             setIsLoggedIn(true);
-    //         }
-
-    //     })();
-
-    // }, [isLoggedIn])
-
+    useEffect(() => {
+        let _currentToken = localStorage.getItem('token');
+        (function checkLoggedInStatus() {
+            if (_currentToken !== "") {
+                setUserToken(_currentToken);
+                setIsLoggedIn(true);
+            }
+        })();
+    }, [])
 
     const logOut = () => {
         setToken(window.localStorage.clear());
         setIsLoggedIn(false);
     }
-
-
-
-
     return (
         <>
-
             <nav className="navbar navbar-expand-lg bg-primary">
                 <div className="container-fluid ">
                     <div className="navbar-brand fw-bold text-light"><Link to="/">LOGO</Link></div>

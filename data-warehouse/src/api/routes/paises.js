@@ -4,7 +4,7 @@ var actions = require('../database/actions/actions');
 var authentication = require('../authentication');
 var paisesModel = require('../models/paisesModel');
 
-
+// Trae todos los paises por region
 router.get('/api/v1/paises/:idRegion', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const pais = await actions.get(paisesModel.model, { idRegion: req.params.idRegion });
@@ -15,6 +15,7 @@ router.get('/api/v1/paises/:idRegion', /*authentication.verifyUser,*/ async (req
 
 });
 
+//Trae todas los paises
 router.get('/api/v1/paises', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const paises = await paisesModel.model.aggregate([
@@ -35,7 +36,8 @@ router.get('/api/v1/paises', /*authentication.verifyUser,*/ async (req, res) => 
 
 });
 
-router.post('/api/v1/pais', authentication.verifyUser, async (req, res) => {
+//Crea un nuevo pais
+router.post('/api/v1/pais', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const pais = await actions.create(paisesModel.model, req.body);
         res.json({ Message: "Pais created successfully", Pais: `${pais}` })
@@ -45,7 +47,8 @@ router.post('/api/v1/pais', authentication.verifyUser, async (req, res) => {
 
 });
 
-router.patch('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
+//Actualiza un campo de pais por ID
+router.patch('/api/v1/pais/:id', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         await actions.update(paisesModel.model, req.params.id, req.body);
@@ -56,7 +59,8 @@ router.patch('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => 
     }
 });
 
-router.put('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
+//Actualiza un pais por ID
+router.put('/api/v1/pais/:id', /*authentication.verifyUser,*/ async (req, res) => {
 
     try {
         await actions.update(paisesModel.model, req.params.id, req.body);
@@ -68,6 +72,7 @@ router.put('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
     }
 });
 
+//Elimina un pais por ID
 router.delete('/api/v1/pais/:id', authentication.verifyUser, async (req, res) => {
 
     try {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const schema = {
-    nombre: String,
+    region: String,
 }
 
 module.exports.model = mongoose.model('Regiones', schema);

@@ -4,7 +4,7 @@ var actions = require('../database/actions/actions');
 var authentication = require('../authentication');
 var usuariosModel = require('../models/usuariosModel');
 
-
+//Trae una lista de todos los usuarios de la base de datos
 router.get('/api/v1/usuarios', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         const usuarios = await actions.get(usuariosModel.model);
@@ -15,6 +15,7 @@ router.get('/api/v1/usuarios', /*authentication.verifyUser,*/ async (req, res) =
 
 });
 
+//Trae un usuario por ID
 router.get('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
     try {
         const usuario = await actions.get(usuariosModel.model, { email: req.params.id });
@@ -29,7 +30,7 @@ router.get('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) =>
     }
 });
 
-
+//Crea un nuevo usuario
 router.post('/api/v1/usuario', async (req, res) => {
 
     try {
@@ -54,6 +55,7 @@ router.post('/api/v1/usuario', async (req, res) => {
 
 });
 
+//Actualiza un campo de usuario por ID
 router.patch('/api/v1/usuario/:id', /*authentication.verifyUser,*/ async (req, res) => {
     try {
         await actions.update(usuariosModel.model, req.params.id, req.body);
@@ -66,6 +68,9 @@ router.patch('/api/v1/usuario/:id', /*authentication.verifyUser,*/ async (req, r
 
 });
 
++584121653172
+
+//Actualiza un usuario por ID
 router.put('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
     try {
         await actions.update(usuariosModel.model, req.params.id, req.body);
@@ -78,6 +83,7 @@ router.put('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) =>
 
 });
 
+//Borra un usuario por ID
 router.delete('/api/v1/usuario/:id', authentication.verifyUser, async (req, res) => {
     await actions.delete(usuariosModel.model, req.params.id);
     res.json({ Message: 'Usuario deleted successfully.' });

@@ -2,14 +2,11 @@ import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import Usuarios from './pages/Usuarios';
+import Login from '../src/pages/Login';
 import Company from './pages/Company';
-import Contactos from './pages/Contactos';
 import Region from './pages/Region';
-import Login from './pages/Login';
-import CrearUsuario from './pages/CrearUsuario';
-import EditUsuario from './pages/EditUsuario';
-
+import Contactos from './components/Contact';
+import Usuarios from './pages/Usuarios';
 
 
 
@@ -29,9 +26,6 @@ function App() {
     }
 
   }, [token])
-
-
-
 
 
   return (
@@ -71,16 +65,6 @@ function App() {
           <Route exact path="/login">
             <Login />
           </Route>
-
-          <Route exact path="/crear-usuario">
-            <CrearUsuario />
-          </Route>
-
-          <Route exact path="/editar-usuario">
-            <EditUsuario />
-          </Route>
-
-
 
 
         </Switch>
